@@ -9,11 +9,13 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const connectDb = require('./config/database')
 const homeRoutes = require('./routes/home')
+const authRoutes = require('./routes/auth')
+
 
 // Initialize express
 const app = express()
 
-//Load config setting the .env path to /config/.env
+// Load config setting the .env path to /config/.env
 dotenv.config({ path: './config/.env' });
 
 // Load passport config
@@ -28,12 +30,12 @@ app.use(express.static('public')); // Tells express to serve up these 'static' f
 app.use(cors()); // allows for cross origin resource sharing
 app.use(morgan('dev')); // Logging middleware. Check console for logs
 
-//Body Parsing Middleware
+// Body Parsing Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// Setup Sessions - stored in Mongodb
+// Setup Sessions - stored in Mongodb - middleware for passport
 app.use(
     session({
       secret: 'keyboard cat',
@@ -50,16 +52,9 @@ app.use(passport.session());
 //Static Folder
 app.use(express.static("public"));
 
-// // Routes
-app.use('/', homeRoutes);
-
-
-// Calling our middleware
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-
 // Routes
-app.use('/', homeRoutes)
+app.use('/', homeRoutes);
+app.use('/auth', authRoutes);
 
 // Initializing our PORT
 let PORT = process.env.PORT || 3000;

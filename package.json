@@ -10,6 +10,8 @@
   "author": "Logan Brock",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
     "db": "^3.3.1",
@@ -18,12 +20,18 @@
     "express": "^4.17.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
+    "materialize-css": "^1.0.0-rc.2",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
-    "session": "^0.1.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "session": "^0.1.0",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
